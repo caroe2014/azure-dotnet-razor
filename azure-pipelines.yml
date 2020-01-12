@@ -34,15 +34,17 @@ steps:
     projects: '**/*.csproj'
 
 - task: ArchiveFiles@2
+  displayName: 'Archive application'
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-#    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-
+#    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
+    includeRootFolder: false
+#    archiveType: 'zip'
+#    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+#    replaceExistingArchive: true
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: true
     workingDirectory: '$(Build.ArtifactStagingDirectory)'
+
