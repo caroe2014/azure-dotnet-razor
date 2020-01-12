@@ -20,10 +20,6 @@ steps:
     packageType: sdk
     version: 3.x
 
-- script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
-  displayName: 'Write build info'
-  workingDirectory: azure-dotnet-test/wwwroot
-
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
   inputs:
