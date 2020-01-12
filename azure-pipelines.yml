@@ -20,13 +20,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(system.defaultworkingdirectory)'
-- task: DotNetCoreCLI@2
-  displayName: Restore
-  inputs:
-    version: '3.0'
-    command: 'restore'
-    projects: '$(system.defaultworkingdirectory)'
-#    projects: '$(Parameters.RestoreBuildProjects)' 
+ 
 
 - task: VSBuild@1
   inputs:
@@ -34,17 +28,3 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(system.defaultworkingdirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
-        publishLocation: 'Container'
