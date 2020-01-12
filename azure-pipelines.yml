@@ -9,7 +9,6 @@ trigger:
 pool:
   vmImage: 'Ubuntu-16.04'
   name: Azure Pipelines
-  demands: npm
 
 variables:
   solution: '**/*.sln'
@@ -32,14 +31,14 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: Restore
   inputs:
-    version: '3.0'
+    version: '3.1'
     command: 'restore'
     projects: '$(system.defaultworkingdirectory)'
 #    projects: '$(Parameters.RestoreBuildProjects)' 
 - task: DotNetCoreCLI@2 
   displayName: Build 
   inputs: 
-    version: '3.0'
+    version: '3.1'
     command: 'build'
     projects: '$(Build.SourcesDirectory)'
 
