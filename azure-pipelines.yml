@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: UseDotNet@3.1
+- task: UseDotNet@3
   displayName: 'Use .NET Core SDK 2.1.505'
   inputs:
     packageType: sdk
@@ -34,13 +34,13 @@ steps:
   displayName: 'Write build info'
   workingDirectory: azure-dotnet-razor/wwwroot
 
-- task: DotNetCoreCLI@3.1
+- task: DotNetCoreCLI@3
   displayName: 'Restore project dependencies'
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@3.1
+- task: DotNetCoreCLI@3
   displayName: 'Build the project - Release'
   inputs:
     command: 'build'
