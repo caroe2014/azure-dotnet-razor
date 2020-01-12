@@ -36,11 +36,11 @@ steps:
 - task: ArchiveFiles@2
   displayName: 'Archive application'
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-#    includeRootFolder: false
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
