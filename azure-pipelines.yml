@@ -44,9 +44,9 @@ steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'edgaro'
-    appType: 'webAppLinux'
+    appType: webAppLinux
     appName: 'v-edcaroLinuxdotnetcorerazor'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: $(System.DefaultWorkingDirectory)/**/*.zip
 
 #- task: DotNetCoreCLI@2
 #  inputs:
