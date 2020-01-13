@@ -7,7 +7,7 @@ trigger:
 - master
  
 pool:
-  vmImage: 'ubuntu-16.04'
+  vmImage: 'ubuntu-latest'
  
 
 variables:
@@ -46,7 +46,7 @@ steps:
     azureSubscription: 'edgaro'
     appType: webAppLinux
     appName: 'v-edcaroLinuxdotnetcorerazor'
-    package: $(System.DefaultWorkingDirectory)/**/*.zip
+    package:  $(System.ArtifactsDirectory)**/*.zip
 
 #- task: DotNetCoreCLI@2
 #  inputs:
