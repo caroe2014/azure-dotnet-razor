@@ -1,12 +1,4 @@
 # ASP.NET Core (.NET Framework)
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'edgaro'
-    appType: 'webAppLinux'
-    WebAppName: 'v-edcaroLinuxdotnetcorerazor'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'DOTNETCORE|2.2'
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -49,16 +41,16 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-#- task: AzureWebApp@1
-#  inputs:
-#    azureSubscription: 'edgaro'
-#    appType: 'webAppLinux'
-#    appName: 'v-edcaroLinuxdotnetcorerazor'
-#    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-
-- task: DotNetCoreCLI@2
+- task: AzureWebApp@1
   inputs:
-    command: 'publish'
-    publishWebProjects: true
-    modifyOutputPath: false
-    workingDirectory: '$(Build.ArtifactStagingDirectory)'
+    azureSubscription: 'edgaro'
+    appType: 'webAppLinux'
+    appName: 'v-edcaroLinuxdotnetcorerazor'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: 'publish'
+#    publishWebProjects: true
+#    modifyOutputPath: false
+#    workingDirectory: '$(Build.ArtifactStagingDirectory)'
