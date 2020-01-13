@@ -41,16 +41,16 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-#- task: AzureWebApp@1
-#  inputs:
-#    azureSubscription: 'edgaro'
-#    appType: webAppLinux
-#    appName: 'v-edcaroLinuxdotnetcorerazor'
-#    package:  $(System.ArtifactsDirectory)**/*.zip
-
-- task: DotNetCoreCLI@2
+- task: AzureWebApp@1
   inputs:
-    command: 'publish'
-    publishWebProjects: true
-    modifyOutputPath: false
-    workingDirectory: '$(Build.ArtifactStagingDirectory)'
+    azureSubscription: 'edgaroarm'
+    appType: webAppLinux
+    appName: 'v-edcaroLinuxdotnetcorerazor'
+    package:  $(System.ArtifactsDirectory)**/*.zip
+
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: 'publish'
+#    publishWebProjects: true
+#    modifyOutputPath: false
+#    workingDirectory: '$(Build.ArtifactStagingDirectory)'
