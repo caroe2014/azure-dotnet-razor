@@ -46,7 +46,7 @@ steps:
     azureSubscription: 'edgaro'
     appType: webAppLinux
     appName: 'v-edcaroLinuxdotnetcorerazor'
-    deploymentMethod: auto
+#    deploymentMethod: auto
 #    package: $(System.ArtifactsDirectory)**/*.zip
 
 #- task: DotNetCoreCLI@2
